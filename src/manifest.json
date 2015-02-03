@@ -1,0 +1,23 @@
+﻿{
+  "name": "NowPlaying Tweet for Google Play Music",
+  "manifest_version": 2,
+  "version": "0.1.1.0",
+  "description": "Tweet music information playing on Google Play Music.",
+  "icons": {"128":"128.png"},
+  "page_action": {
+    "default_title": "Tweet NowPlaying"
+  },
+  "background": {"page": "background/background.html"},
+  "permissions": [
+    "tabs","http://twitter.com/","https://play.google.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://play.google.com/music/listen*"],
+      "js": ["background/getinfo.js"],
+      "all_frames": true
+    }
+  ],
+  "options_page": "option/option.html",
+  "content_security_policy": "script-src 'self' https://twitter.com https://platform.twitter.com; object-src 'self' https://twitter.com https://platform.twitter.com"
+}
